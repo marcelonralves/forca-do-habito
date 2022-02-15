@@ -8,18 +8,20 @@
                 <h3 class="card-title">Cadastrar Cliente</h3>
             </div>
 
-            <form method="post" action="{{ route('customerPostForm') }}">
+            <form method="post" action="{{ route('userPostForm') }}">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Nome do Cliente</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Marcelo Alves">
+                        <label for="exampleInputEmail1">Nome Completo</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="ex: Marcelo do Nascimento Alves">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Categoria</label>
-                        <select name="category" class="form-control" id="exampleInputPassword1">
-                            <option value="first">Selecione a categoria</option>
-                        </select>
+                        <label for="exampleInputEmail1">Login</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="ex: marceloadmin">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Nome Completo</label>
+                        <input type="password" class="form-control" id="exampleInputEmail1" placeholder="Senha">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Perfil</label>

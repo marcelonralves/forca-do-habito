@@ -27,9 +27,9 @@
                     Cadastrar
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Cliente</a>
-                    <a class="dropdown-item" href="#">Usuários</a>
-                    <a class="dropdown-item" href="#">Categoria</a>
+                    <a class="dropdown-item" href="{{ route('showCustomerForm') }}">Cliente</a>
+                    <a class="dropdown-item" href="{{ route('showUserForm') }}">Usuários</a>
+                    <a class="dropdown-item" href="{{ route('showCategoryForm') }}">Categoria</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

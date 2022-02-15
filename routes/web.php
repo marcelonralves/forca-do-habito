@@ -18,8 +18,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/admin', [AdminViewController::class, 'dashboard']);
-Route::get('/admin/cadastrar/cliente', [RegisterViewController::class, 'showForm']);
-Route::post('/admin/cadastrar/cliente', [RegisterController::class, 'postForm']);
+Route::get('/admin/cadastrar/cliente', [RegisterViewController::class, 'showCustomerForm'])->name('showCustomerForm');
+Route::post('/admin/cadastrar/cliente', [RegisterController::class, 'postCustomerForm'])->name('customerPostForm');
+
+Route::get('/admin/cadastrar/usuario', [RegisterViewController::class, 'showUserForm'])->name('showUserForm');
+Route::post('/admin/cadastrar/usuario', [RegisterController::class, 'postUserForm'])->name('userPostForm');
+
+Route::get('/admin/cadastrar/categoria', [RegisterViewController::class, 'showCategoryForm'])->name('showCategoryForm');
+Route::post('/admin/cadastrar/categoria', [RegisterController::class, 'postCategoryForm'])->name('categoryPostForm');
+
+
 Route::get('/admin/relatorio/{provider}', [AdminViewController::class, 'dashboard']);
 
 Route::resource('cadastrar','CustomerRegister');
