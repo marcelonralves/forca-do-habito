@@ -173,7 +173,7 @@
     </footer>
 </div>
 
-<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/jquery.js') }}"></script>
 <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 
 <script src="{{ asset('js/adminlte.js?v=3.2.0') }}"></script>
@@ -183,5 +183,7 @@
 <script src="{{ asset('js/demo.js') }}"></script>
 
 <script src="{{ asset('js/dashboard3.js') }}"></script>
+
+@yield('script')
 </body>
 </html>

@@ -10,23 +10,23 @@ use Illuminate\Http\Request;
 
 class ReportViewController extends Controller
 {
-    public function showCustomerReport()
+    public function showCustomerReport(Request $request)
     {
-        $customers = Customer::all();
+        $customers = Customer::paginate(10);
 
         return view('admin.reports.customer', compact('customers'));
     }
 
-    public function showUserReport()
+    public function showUserReport(Request $request)
     {
         $users = User::paginate(10);
 
         return view('admin.reports.user', compact('users'));
     }
 
-    public function showCategoryReport()
+    public function showCategoryReport(Request $request)
     {
-        $categories = Category::all();
+        $categories = Category::paginate(10);
 
         return view('admin.reports.category', compact('categories'));
     }
