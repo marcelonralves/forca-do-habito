@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminViewController;
+use App\Http\Controllers\Admin\Registers\RegisterController;
+use App\Http\Controllers\Admin\Registers\RegisterViewController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -15,4 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [AdminViewController::class, 'dashboard']);
+Route::get('/admin', [AdminViewController::class, 'dashboard']);
+Route::get('/admin/cadastrar/cliente', [RegisterViewController::class, 'showForm']);
+Route::post('/admin/cadastrar/cliente', [RegisterController::class, 'postForm']);
+Route::get('/admin/relatorio/{provider}', [AdminViewController::class, 'dashboard']);
+
+Route::resource('cadastrar','CustomerRegister');
