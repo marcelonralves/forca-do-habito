@@ -12,8 +12,8 @@
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Categoria</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Operador">
+                        <label for="category">Categoria</label>
+                        <input type="text" class="form-control" id="category" name="category" placeholder="Operador">
                     </div>
                 </div>
 

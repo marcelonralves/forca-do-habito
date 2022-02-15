@@ -12,18 +12,18 @@
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Nome do Cliente</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Marcelo Alves">
+                        <label for="fullname">Nome do Cliente</label>
+                        <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Marcelo Alves">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Categoria</label>
-                        <select name="category" class="form-control" id="exampleInputPassword1">
+                        <label for="category">Categoria</label>
+                        <select class="form-control" name="category" id="category">
                             <option value="first">Selecione a categoria</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Perfil</label>
-                        <select name="perfil" class="form-control" id="exampleInputPassword1">
+                        <label for="profile">Perfil</label>
+                        <select class="form-control" name="profile" id="profile">
                             <option value="first">Selecione o perfil</option>
                         </select>
                     </div>
