@@ -32,6 +32,8 @@
                     <a class="dropdown-item" href="{{ route('showCategoryForm') }}">Categoria</a>
                 </div>
             </li>
+
+            @if(\Illuminate\Support\Facades\Auth::user()->profile != "Visualizar")
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Relatório
@@ -42,6 +44,7 @@
                     <a class="dropdown-item" href="{{ route('showCategoryReport') }}">Categoria</a>
                 </div>
             </li>
+            @endif
         </ul>
 
         <ul class="navbar-nav ml-auto">

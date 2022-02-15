@@ -8,29 +8,29 @@
                 <h3 class="card-title">Cadastrar Cliente</h3>
             </div>
 
-            <form method="post" action="{{ route('userPostForm') }}">
+            <form method="post" action="{{ isset($user) ? route('UserPostReport') : route('userPostForm') }}">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
                         <label for="full_name">Nome Completo</label>
-                        <input type="text" class="form-control" id="full_name" name="full_name" placeholder="ex: Marcelo do Nascimento Alves">
+                        <input type="text" class="form-control" id="full_name" name="full_name" value="{{ $user->full_name ?? '' }}" placeholder="ex: Marcelo do Nascimento Alves">
                     </div>
                     <div class="form-group">
                         <label for="username">Login</label>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="ex: marceloadmin">
+                        <input type="text" class="form-control" id="username" name="username" value="{{ $user->username ?? '' }}" placeholder="ex: marceloadmin">
                     </div>
                     <div class="form-group">
                         <label for="password">Senha</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Senha">
+                        <input type="password" class="form-control" id="password" name="password" value="" placeholder="Senha">
                     </div>
                     <div class="form-group">
                         <label for="profile">Perfil</label>
-                       <input type="text" class="form-control" id="profile" name="profile">
+                       <input type="text" class="form-control" id="profile" value="{{ $user->profile ?? '' }}" name="profile">
                     </div>
                 </div>
 
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                    <button type="submit" class="btn btn-primary">{{ isset($user) ? 'Editar' : 'Cadastrar' }}</button>
                 </div>
             </form>
         </div>

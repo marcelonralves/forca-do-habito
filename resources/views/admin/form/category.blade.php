@@ -8,12 +8,12 @@
                 <h3 class="card-title">Cadastrar Cliente</h3>
             </div>
 
-            <form method="post" action="{{ route('categoryPostForm') }}">
+            <form method="post" action="{{ isset($category) ? route('CategoryPostReport') : route('categoryPostForm') }}">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
                         <label for="title">Categoria</label>
-                        <input type="text" class="form-control" id="title" name="title" placeholder="Operador">
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Operador" value="{{ $category->title ?? '' }}">
                     </div>
                 </div>
 

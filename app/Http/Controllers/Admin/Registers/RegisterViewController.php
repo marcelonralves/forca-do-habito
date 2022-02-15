@@ -22,7 +22,6 @@ class RegisterViewController extends Controller
 
     public function showCategoryForm(): View
     {
-
         return view('admin.form.category');
     }
 }

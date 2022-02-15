@@ -15,4 +15,8 @@ class Customer extends Model
       'profile'
     ];
 
+    public function category()
+    {
+        return $this->hasOne(Category::class, 'id', 'category_id');
+    }
 }
