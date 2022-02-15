@@ -11,4 +11,9 @@ class AdminViewController extends Controller
     {
         return view('admin.dashboard');
     }
+
+    public function login(): View
+    {
+        return view('admin.login');
+    }
 }
