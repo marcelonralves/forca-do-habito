@@ -20,7 +20,7 @@
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="/" class="nav-link">Dashboard</a>
+                <a href="/admin" class="nav-link">Dashboard</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -37,9 +37,9 @@
                     Relatório
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Cliente</a>
-                    <a class="dropdown-item" href="#">Usuários</a>
-                    <a class="dropdown-item" href="#">Categoria</a>
+                    <a class="dropdown-item" href="{{ route('showCustomerReport') }}">Cliente</a>
+                    <a class="dropdown-item" href="{{ route('showUserReport') }}">Usuários</a>
+                    <a class="dropdown-item" href="{{ route('showCategoryReport') }}">Categoria</a>
                 </div>
             </li>
         </ul>
