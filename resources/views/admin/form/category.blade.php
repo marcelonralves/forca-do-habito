@@ -8,12 +8,12 @@
                 <h3 class="card-title">Cadastrar Cliente</h3>
             </div>
 
-            <form method="post" action="{{ route('customerPostForm') }}">
+            <form method="post" action="{{ route('categoryPostForm') }}">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="category">Categoria</label>
-                        <input type="text" class="form-control" id="category" name="category" placeholder="Operador">
+                        <label for="title">Categoria</label>
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Operador">
                     </div>
                 </div>
 

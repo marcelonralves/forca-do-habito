@@ -12,12 +12,12 @@
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="fullname">Nome Completo</label>
-                        <input type="text" class="form-control" id="fullname" name="fullname" placeholder="ex: Marcelo do Nascimento Alves">
+                        <label for="full_name">Nome Completo</label>
+                        <input type="text" class="form-control" id="full_name" name="full_name" placeholder="ex: Marcelo do Nascimento Alves">
                     </div>
                     <div class="form-group">
-                        <label for="login">Login</label>
-                        <input type="text" class="form-control" id="login" name="fullname" placeholder="ex: marceloadmin">
+                        <label for="username">Login</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="ex: marceloadmin">
                     </div>
                     <div class="form-group">
                         <label for="password">Senha</label>
@@ -25,9 +25,7 @@
                     </div>
                     <div class="form-group">
                         <label for="profile">Perfil</label>
-                        <select name="perfil" class="form-control" id="profile" name="profile">
-                            <option value="first">Selecione o perfil</option>
-                        </select>
+                       <input type="text" class="form-control" id="profile" name="profile">
                     </div>
                 </div>
 

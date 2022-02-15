@@ -12,19 +12,22 @@
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="fullname">Nome do Cliente</label>
-                        <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Marcelo Alves">
+                        <label for="full_name">Nome do Cliente</label>
+                        <input type="text" class="form-control" name="full_name" id="full_name" placeholder="Marcelo Alves">
                     </div>
                     <div class="form-group">
                         <label for="category">Categoria</label>
-                        <select class="form-control" name="category" id="category">
-                            <option value="first">Selecione a categoria</option>
+                        <select class="form-control" name="category_id" id="category_id">
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->title }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="profile">Perfil</label>
                         <select class="form-control" name="profile" id="profile">
-                            <option value="first">Selecione o perfil</option>
+                            <option value="visualizador">Visualizador</option>
+                            <option value="administrador">Administrador</option>
                         </select>
                     </div>
                 </div>
