@@ -23,8 +23,8 @@
                         <td>{{ $user->full_name }}</td>
                         <td>{{ $user->username }}</td>
                         <td>{{ $user->profile }}</td>
-                        <td><a href="{{ url("/admin/relatorios/usuario/{$user->id}/edit") }}" class="btn btn-warning">Editar</a>
-                            <a href="" onclick="confirmDelete()" class="btn btn-danger">Deletar</a>
+                        <td><a href="{{ url("/admin/relatorios/usuarios/{$user->id}/edit") }}" class="btn btn-warning">Editar</a>
+                            <button onclick="confirmDelete()" class="btn btn-danger">Deletar</button>
                         </td>
                     </tr>
                 @endforeach
@@ -36,9 +36,10 @@
     @section('script')
         <script>
             function confirmDelete() {
+
                 let confirma = confirm("Você tem certeza que quer deletar esse registro? Ação não reversível");
                 if (confirma) {
-                    window.location.href = "{{ url("/admin/relatorios/usuario/{$user->id}/del") }}";
+                    window.location.href = "{{ url("/admin/relatorios/usuarios/{$user->id}/del") }}";
                 }
             }
         </script>

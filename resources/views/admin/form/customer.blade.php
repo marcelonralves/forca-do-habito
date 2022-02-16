@@ -5,10 +5,10 @@
 
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Cadastrar Cliente</h3>
+                <h3 class="card-title"><h3 class="card-title">{{ isset($customer) ? 'Editar' : 'Cadastrar' }}  Cliente</h3></h3>
             </div>
 
-            <form method="post" action="{{ isset($customer) ? route('CustomerPostReport') : route('customerPostForm') }}">
+            <form method="post" action="{{ isset($customer) ? route('CustomerPostReport', ['id' => $customer->id]) : route('customerPostForm') }}">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">

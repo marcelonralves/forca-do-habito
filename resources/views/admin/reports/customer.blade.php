@@ -22,7 +22,7 @@
                         <td><span class="badge bg-danger">{{ $customer->category->title }}</span></td>
                         <td>{{ $customer->profile }}</td>
                         <td><a href="{{ url("/admin/relatorios/clientes/{$customer->id}/edit") }}" class="btn btn-warning">Editar</a>
-                            <a href="{{ url("/admin/relatorios/clientes/{$customer->id}/del") }}" class="btn btn-danger">Deletar</a>
+                            <button onclick="confirmDelete()" class="btn btn-danger">Deletar</button>
                         </td>
                     </tr>
                 @endforeach
@@ -34,6 +34,7 @@
     @section('script')
         <script>
             function confirmDelete() {
+
                 let confirma = confirm("Você tem certeza que quer deletar esse registro? Ação não reversível");
                 if (confirma) {
                     window.location.href = "{{ url("/admin/relatorios/clientes/{$customer->id}/del") }}";

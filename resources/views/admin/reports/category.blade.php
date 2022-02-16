@@ -20,7 +20,7 @@
                         <th scope="row">{{ $category->id }}</th>
                         <td>{{ $category->title }}</td>
                         <td><a href="{{ url("/admin/relatorios/categorias/{$category->id}/edit") }}" class="btn btn-warning">Editar</a>
-                            <a href="{{ url("/admin/relatorios/categorias/{$category->id}/del") }}" class="btn btn-danger">Deletar</a>
+                            <button onclick="confirmDelete()" class="btn btn-danger">Deletar</button>
                         </td>
                     </tr>
                 @endforeach
@@ -31,7 +31,8 @@
     </div>
     @section('script')
         <script>
-            function confirmDelete() {
+            function confirmDelete(e) {
+
                 let confirma = confirm("Você tem certeza que quer deletar esse registro? Ação não reversível");
                 if (confirma) {
                     window.location.href = "{{ url("/admin/relatorios/categorias/{$category->id}/del") }}";

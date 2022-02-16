@@ -5,10 +5,10 @@
 
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Cadastrar Cliente</h3>
+                <h3 class="card-title">{{ isset($user) ? 'Editar' : 'Cadastrar' }} Usuário</h3>
             </div>
 
-            <form method="post" action="{{ isset($user) ? route('UserPostReport') : route('userPostForm') }}">
+            <form method="post" action="{{ isset($user) ? route('UserPostReport', ['id' => $user->id]) : route('userPostForm') }}">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
@@ -19,10 +19,12 @@
                         <label for="username">Login</label>
                         <input type="text" class="form-control" id="username" name="username" value="{{ $user->username ?? '' }}" placeholder="ex: marceloadmin">
                     </div>
+                    @if(!isset($user))
                     <div class="form-group">
                         <label for="password">Senha</label>
                         <input type="password" class="form-control" id="password" name="password" value="" placeholder="Senha">
                     </div>
+                    @endif
                     <div class="form-group">
                         <label for="profile">Perfil</label>
                        <input type="text" class="form-control" id="profile" value="{{ $user->profile ?? '' }}" name="profile">

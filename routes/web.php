@@ -41,6 +41,9 @@ Route::post('/admin/relatorios/clientes/{id?}/edit', [ReportController::class, '
 Route::post('/admin/relatorios/usuarios/{id?}/edit', [ReportController::class, 'postUserReport'])->name('UserPostReport');
 Route::post('/admin/relatorios/categorias/{id?}/edit', [ReportController::class, 'postCategoryReport'])->name('CategoryPostReport');
 
+Route::get('/admin/relatorios/clientes/{id?}/del', [ReportController::class, 'deleteCustomerReport']);
+Route::get('/admin/relatorios/usuarios/{id?}/del', [ReportController::class, 'deleteUserReport']);
+Route::get('/admin/relatorios/categorias/{id?}/del', [ReportController::class, 'deleteCategoryReport']);
 
 
 Route::get('/admin/relatorios/clientes', [ReportViewController::class, 'showCustomerReport'])->name('showCustomerReport');
