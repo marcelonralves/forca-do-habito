@@ -37,6 +37,11 @@
 <body class="text-center">
 
 <main class="form-signin">
+    @if (session('message'))
+        <div class="alert alert-danger">
+            {{ session('message') }}
+        </div>
+    @endif
     <form method="post" action="{{ route('postLogin') }}">
         @csrf
         <h1 class="h3 mb-3 fw-normal">Administração</h1>

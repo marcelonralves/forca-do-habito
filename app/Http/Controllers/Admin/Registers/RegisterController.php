@@ -21,7 +21,7 @@ class RegisterController extends Controller
 
         $customer = Customer::create($request->only(['full_name', 'category_id', 'profile']));
 
-        return back()->with(["message" => "O cliente <b>{$customer->fullname}</b> foi criado com sucesso"]);
+        return back()->with("message", "O cliente $request->full_name foi criado com sucesso");
     }
 
     public function postUserForm(Request $request)
@@ -34,9 +34,10 @@ class RegisterController extends Controller
         ]);
 
         $request->merge(["password" => Hash::make($request->password)]);
+
         $user = User::create($request->only(['full_name', 'username', 'password', 'profile']));
 
-        return back()->with(["message" => "Usuário <b>{$user->login}</b> criado com sucesso!"]);
+        return back()->with("message", "O usuário $request->username foi criado com sucesso");
     }
 
     public function postCategoryForm(Request $request)
@@ -47,7 +48,6 @@ class RegisterController extends Controller
 
         $category = Category::create($request->only('title'));
 
-
-        return back()->with(["message" => "A categoria <b>{$category->title}</b> foi criada com sucesso!"]);
+        return back()->with("message", "A categoria '{$request->title}' foi criada com sucesso!");
     }
 }

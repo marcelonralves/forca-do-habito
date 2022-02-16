@@ -33,9 +33,15 @@ Route::get('/admin/cadastrar/categoria', [RegisterViewController::class, 'showCa
 Route::post('/admin/cadastrar/categoria', [RegisterController::class, 'postCategoryForm'])->name('categoryPostForm');
 
 
-Route::get('/admin/relatorios/clientes/{id?}/edit', [ReportViewController::class, 'editCustomerReport'])->name('CustomerPostReport');
-Route::get('/admin/relatorios/usuarios/{id?}/edit', [ReportViewController::class, 'editUserReport'])->name('UserPostReport');
-Route::get('/admin/relatorios/categorias/{id?}/edit', [ReportViewController::class, 'editCategoryReport'])->name('CategoryPostReport');
+Route::get('/admin/relatorios/clientes/{id?}/edit', [ReportViewController::class, 'editCustomerReport']);
+Route::get('/admin/relatorios/usuarios/{id?}/edit', [ReportViewController::class, 'editUserReport']);
+Route::get('/admin/relatorios/categorias/{id?}/edit', [ReportViewController::class, 'editCategoryReport']);
+
+Route::post('/admin/relatorios/clientes/{id?}/edit', [ReportController::class, 'postCustomerReport'])->name('CustomerPostReport');
+Route::post('/admin/relatorios/usuarios/{id?}/edit', [ReportController::class, 'postUserReport'])->name('UserPostReport');
+Route::post('/admin/relatorios/categorias/{id?}/edit', [ReportController::class, 'postCategoryReport'])->name('CategoryPostReport');
+
+
 
 Route::get('/admin/relatorios/clientes', [ReportViewController::class, 'showCustomerReport'])->name('showCustomerReport');
 Route::post('/admin/relatorios/clientes', [ReportController::class, 'postCustomerReport']);

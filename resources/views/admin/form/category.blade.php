@@ -8,7 +8,7 @@
                 <h3 class="card-title">Cadastrar Cliente</h3>
             </div>
 
-            <form method="post" action="{{ isset($category) ? route('CategoryPostReport') : route('categoryPostForm') }}">
+            <form method="post" action="{{ isset($category) ? route('CategoryPostReport', ['id'=> $category->id]) : route('categoryPostForm') }}">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                    <button type="submit" class="btn btn-primary">{{ isset($category) ? 'Editar' : 'Cadastrar' }}</button>
                 </div>
             </form>
         </div>

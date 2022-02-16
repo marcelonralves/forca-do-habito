@@ -21,7 +21,7 @@ class ReportController extends Controller
         $category = Category::find($request->id);
         $category->update($request->only('title'));
 
-        return back()->with(["message" => "Categoria atualizada com sucesso!"]);
+        return redirect('/admin/relatorios/categorias')->with(["message" => "Categoria '$request->title' atualizada com sucesso!"]);
     }
 
     public function postCustomerReport(Request $request, int $id)
