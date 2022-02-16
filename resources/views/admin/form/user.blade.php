@@ -8,7 +8,7 @@
                 <h3 class="card-title">{{ isset($user) ? 'Editar' : 'Cadastrar' }} Usuário</h3>
             </div>
 
-            <form method="post" action="{{ isset($user) ? route('UserPostReport', ['id' => $user->id]) : route('userPostForm') }}">
+            <form method="post" action="{{ isset($user) ? route('admin.post.user.report', ['id' => $user->id]) : route('admin.post.user.register') }}">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">

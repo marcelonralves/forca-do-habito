@@ -27,9 +27,9 @@
                     Cadastrar
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('showCustomerForm') }}">Cliente</a>
-                    <a class="dropdown-item" href="{{ route('showUserForm') }}">Usuários</a>
-                    <a class="dropdown-item" href="{{ route('showCategoryForm') }}">Categoria</a>
+                    <a class="dropdown-item" href="{{ route('admin.form.customer.register') }}">Cliente</a>
+                    <a class="dropdown-item" href="{{ route('admin.form.user.register') }}">Usuário</a>
+                    <a class="dropdown-item" href="{{ route('admin.form.category.register') }}">Categoria</a>
                 </div>
             </li>
 
@@ -39,9 +39,9 @@
                     Relatório
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('showCustomerReport') }}">Cliente</a>
-                    <a class="dropdown-item" href="{{ route('showUserReport') }}">Usuários</a>
-                    <a class="dropdown-item" href="{{ route('showCategoryReport') }}">Categoria</a>
+                    <a class="dropdown-item" href="{{ route('admin.show.customer.report') }}">Cliente</a>
+                    <a class="dropdown-item" href="{{ route('admin.show.user.report') }}">Usuários</a>
+                    <a class="dropdown-item" href="{{ route('admin.show.category.report') }}">Categoria</a>
                 </div>
             </li>
             @endif
