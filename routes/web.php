@@ -25,6 +25,7 @@ Route::post('admin/login', [AuthController::class, 'postLogin'])->name('postLogi
 
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/', [AdminViewController::class, 'dashboard']);
+    Route::get('/sair', [AuthController::class, 'logout'])->name('admin.logout');
 
     /*
      * REGISTER ROUTES - VIEWS
