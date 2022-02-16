@@ -20,36 +20,56 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/admin/login', [AdminViewController::class, 'login']);
-Route::post('/admin/login', [AuthController::class, 'postLogin'])->name('postLogin');
-Route::get('/admin', [AdminViewController::class, 'dashboard']);
+Route::get('admin/login', [AdminViewController::class, 'login'])->name('login');
+Route::post('admin/login', [AuthController::class, 'postLogin'])->name('postLogin');
+
+Route::prefix('admin')->middleware('auth')->group(function () {
+
+    Route::get('/', [AdminViewController::class, 'dashboard']);
 
 
-Route::get('/admin/cadastrar/cliente', [RegisterViewController::class, 'showCustomerForm'])->name('showCustomerForm');
-Route::post('/admin/cadastrar/cliente', [RegisterController::class, 'postCustomerForm'])->name('customerPostForm');
-Route::get('/admin/cadastrar/usuario', [RegisterViewController::class, 'showUserForm'])->name('showUserForm');
-Route::post('/admin/cadastrar/usuario', [RegisterController::class, 'postUserForm'])->name('userPostForm');
-Route::get('/admin/cadastrar/categoria', [RegisterViewController::class, 'showCategoryForm'])->name('showCategoryForm');
-Route::post('/admin/cadastrar/categoria', [RegisterController::class, 'postCategoryForm'])->name('categoryPostForm');
+    /*
+     * REGISTER ROUTES - VIEWS
+     */
+    Route::controller(RegisterViewController::class)->group(function () {
+        Route::get('cadastrar/cliente', 'showCustomerForm')->name('showCustomerForm');
+        Route::get('cadastrar/usuario', 'showUserForm')->name('showUserForm');
+        Route::get('cadastrar/categoria', 'showCategoryForm')->name('showCategoryForm');
+    });
 
+    /*
+     * REGISTER ROUTES - POSTS
+     */
+    Route::controller(RegisterController::class)->group(function () {
+        Route::post('cadastrar/cliente', 'postCustomerForm')->name('customerPostForm');
+        Route::post('cadastrar/usuario', 'postUserForm')->name('userPostForm');
+        Route::post('cadastrar/categoria', 'postCategoryForm')->name('categoryPostForm');
+    });
 
-Route::get('/admin/relatorios/clientes/{id?}/edit', [ReportViewController::class, 'editCustomerReport']);
-Route::get('/admin/relatorios/usuarios/{id?}/edit', [ReportViewController::class, 'editUserReport']);
-Route::get('/admin/relatorios/categorias/{id?}/edit', [ReportViewController::class, 'editCategoryReport']);
+    /*
+     * REPORTS ROUTES - VIEWS
+     */
+    Route::controller(ReportViewController::class)->group(function () {
+        Route::get('relatorios/clientes/{id}/edit', 'editCustomerReport');
+        Route::get('relatorios/usuarios/{id}/edit', 'editUserReport');
+        Route::get('relatorios/categorias/{id}/edit', 'editCategoryReport');
+        Route::get('relatorios/clientes', 'showCustomerReport')->name('showCustomerReport');
+        Route::get('relatorios/usuarios', 'showUserReport')->name('showUserReport');
+        Route::get('relatorios/categorias', 'showCategoryReport')->name('showCategoryReport');
+    });
 
-Route::post('/admin/relatorios/clientes/{id?}/edit', [ReportController::class, 'postCustomerReport'])->name('CustomerPostReport');
-Route::post('/admin/relatorios/usuarios/{id?}/edit', [ReportController::class, 'postUserReport'])->name('UserPostReport');
-Route::post('/admin/relatorios/categorias/{id?}/edit', [ReportController::class, 'postCategoryReport'])->name('CategoryPostReport');
+    /*
+    * REPORTS ROUTES - POSTS
+    */
+    Route::controller(ReportController::class)->group(function () {
+        //ACTION - EDIT
+        Route::post('relatorios/clientes/{id}/edit', 'postCustomerReport')->name('CustomerPostReport');
+        Route::post('relatorios/usuarios/{id}/edit', 'postUserReport')->name('UserPostReport');
+        Route::post('relatorios/categorias/{id}/edit', 'postCategoryReport')->name('CategoryPostReport');
 
-Route::get('/admin/relatorios/clientes/{id?}/del', [ReportController::class, 'deleteCustomerReport']);
-Route::get('/admin/relatorios/usuarios/{id?}/del', [ReportController::class, 'deleteUserReport']);
-Route::get('/admin/relatorios/categorias/{id?}/del', [ReportController::class, 'deleteCategoryReport']);
-
-
-Route::get('/admin/relatorios/clientes', [ReportViewController::class, 'showCustomerReport'])->name('showCustomerReport');
-Route::post('/admin/relatorios/clientes', [ReportController::class, 'postCustomerReport']);
-Route::get('/admin/relatorios/usuarios', [ReportViewController::class, 'showUserReport'])->name('showUserReport');
-Route::post('/admin/relatorios/usuarios', [ReportController::class, 'postUserReport']);
-
-Route::get('/admin/relatorios/categorias', [ReportViewController::class, 'showCategoryReport'])->name('showCategoryReport');
-Route::post('/admin/relatorios/categorias', [ReportController::class, 'postCategoryReport']);
+        //ACTION - DELETE
+        Route::get('relatorios/clientes/{id}/del', 'deleteCustomerReport');
+        Route::get('relatorios/usuarios/{id}/del', 'deleteUserReport');
+        Route::get('relatorios/categorias/{id}/del', 'deleteCategoryReport');
+    });
+});
