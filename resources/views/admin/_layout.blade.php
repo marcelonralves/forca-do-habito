@@ -33,14 +33,14 @@
                 </div>
             </li>
 
-            @if(\Illuminate\Support\Facades\Auth::user()->profile != "Visualizar")
+            @if(\Illuminate\Support\Facades\Auth::user()->profile != "visualizar")
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Relatório
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ route('admin.show.customer.report') }}">Cliente</a>
-                    <a class="dropdown-item" href="{{ route('admin.show.user.report') }}">Usuários</a>
+                    <a class="dropdown-item" href="{{ route('admin.show.user.report') }}">Usuário</a>
                     <a class="dropdown-item" href="{{ route('admin.show.category.report') }}">Categoria</a>
                 </div>
             </li>

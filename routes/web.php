@@ -64,6 +64,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::post('relatorios/clientes/{id}/edit', 'postCustomerReport')->name('admin.post.customer.report');
         Route::post('relatorios/usuarios/{id}/edit', 'postUserReport')->name('admin.post.user.report');
         Route::post('relatorios/categorias/{id}/edit', 'postCategoryReport')->name('admin.post.category.report');
+        Route::post('relatorios/usuarios/{id}/pass', 'postUserPassReport')->name('admin.post.password');
 
         //ACTION - DELETE
         Route::get('relatorios/clientes/{id}/del', 'deleteCustomerReport');

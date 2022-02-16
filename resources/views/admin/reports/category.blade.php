@@ -3,7 +3,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Default Table</h5>
+            <h5 class="card-title">Relatório de Categorias</h5>
 
             <!-- Default Table -->
             <table class="table">
@@ -31,8 +31,7 @@
     </div>
     @section('script')
         <script>
-            function confirmDelete(e) {
-
+            function confirmDelete() {
                 let confirma = confirm("Você tem certeza que quer deletar esse registro? Ação não reversível");
                 if (confirma) {
                     window.location.href = "{{ url("/admin/relatorios/categorias/{$category->id}/del") }}";

@@ -26,8 +26,8 @@
                     <div class="form-group">
                         <label for="profile">Perfil</label>
                         <select class="form-control" name="profile" id="profile">
-                            <option value="visualizador">Visualizador</option>
-                            <option value="administrador">Administrador</option>
+                            <option value="visualizar">Visualizador</option>
+                            <option value="administrar">Administrador</option>
                         </select>
                     </div>
                 </div>

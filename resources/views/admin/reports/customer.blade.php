@@ -3,7 +3,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Clientes</h5>
+            <h5 class="card-title">Relatório de Clientes</h5>
             <table class="table">
                 <thead>
                 <tr>
@@ -34,7 +34,6 @@
     @section('script')
         <script>
             function confirmDelete() {
-
                 let confirma = confirm("Você tem certeza que quer deletar esse registro? Ação não reversível");
                 if (confirma) {
                     window.location.href = "{{ url("/admin/relatorios/clientes/{$customer->id}/del") }}";

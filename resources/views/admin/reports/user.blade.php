@@ -3,7 +3,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Default Table</h5>
+            <h5 class="card-title">Relatório de Usuários</h5>
 
             <!-- Default Table -->
             <table class="table">
@@ -36,7 +36,6 @@
     @section('script')
         <script>
             function confirmDelete() {
-
                 let confirma = confirm("Você tem certeza que quer deletar esse registro? Ação não reversível");
                 if (confirma) {
                     window.location.href = "{{ url("/admin/relatorios/usuarios/{$user->id}/del") }}";

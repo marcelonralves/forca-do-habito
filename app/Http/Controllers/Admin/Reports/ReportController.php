@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Customer;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ReportController extends Controller
 {
@@ -89,5 +90,25 @@ class ReportController extends Controller
         User::destroy($id);
 
         return back()->with('message', 'Usuário(a) deletado(a) som sucesso!');
+    }
+
+    public function postUserPassReport(Request $request, int $id)
+    {
+        $request->merge(["id" => $id]);
+        $this->validate($request, [
+            'id' => 'required|exists:users,id',
+            'new_password' => 'required',
+            'repeat_new_password' => 'required'
+        ]);
+
+        if($request->input('new_password') != $request->input('repeat_new_password')){
+            return back()->withErrors('As senhas não conferem');
+        }
+
+        $user = User::find($id);
+        $user->password = Hash::make($request->input('new_password'));
+        $user->save();
+
+        return back()->with('message', 'As senhas foi atualizada com sucesso');
     }
 }
