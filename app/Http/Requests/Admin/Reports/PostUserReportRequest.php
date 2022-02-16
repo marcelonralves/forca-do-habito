@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin\Reports;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PostCategoryRegisterRequest extends FormRequest
+class PostUserReportRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,9 @@ class PostCategoryRegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|unique:categories'
+            'id' => 'required|exists:users,id',
+            'full_name' => 'required',
+            'username' => 'required|unique:users,username,'.$this->input('id')
         ];
     }
 }

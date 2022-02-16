@@ -3,15 +3,11 @@
 namespace App\Http\Controllers\Admin\Registers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PostCategoryRegisterRequest;
-use App\Http\Requests\PostCustomerRegisterRequest;
-use App\Http\Requests\PostUserRegisterRequest;
-use App\Models\Category;
-use App\Models\Customer;
-use App\Models\User;
+use App\Http\Requests\Admin\Registers\PostCustomerRegisterRequest;
+use App\Http\Requests\Admin\Registers\PostCategoryRegisterRequest;
+use App\Http\Requests\Admin\Registers\PostUserRegisterRequest;
 use App\Repositories\RegisterRepository;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {

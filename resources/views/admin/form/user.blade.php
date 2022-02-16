@@ -10,6 +10,11 @@
 
             <form method="post" action="{{ isset($user) ? route('admin.post.user.report', ['id' => $user->id]) : route('admin.post.user.register') }}">
                 @csrf
+
+                @if(isset($user))
+                    <input type="hidden" name="id" value="{{ $user->id }}">
+                @endif
+
                 <div class="card-body">
                     <div class="form-group">
                         <label for="full_name">Nome Completo</label>
@@ -50,13 +55,18 @@
                 <div class="card-body">
                     <form method="post" action="{{ route('admin.post.password', ['id' => $user->id]) }}">
                         @csrf
+
+                        @if(isset($user))
+                            <input type="hidden" name="id" value="{{ $user->id }}">
+                        @endif
+
                         <div class="form-group">
                             <label for="new_password">Nova Senha</label>
-                            <input type="password" class="form-control" id="new_password" name="new_password" placeholder="Nova Senha">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Nova Senha">
                         </div>
                         <div class="form-group">
                             <label for="password">Repetir Nova Senha</label>
-                            <input type="password" class="form-control" id="password" name="repeat_new_password" placeholder="Repita a nova senha">
+                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Repita a nova senha">
                         </div>
                 </div>
                     <div class="card-footer">

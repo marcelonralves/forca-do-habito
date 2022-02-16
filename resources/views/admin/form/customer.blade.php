@@ -10,6 +10,11 @@
 
             <form method="post" action="{{ isset($customer) ? route('admin.post.customer.report', ['id' => $customer->id]) : route('admin.post.customer.register') }}">
                 @csrf
+
+                @if(isset($customer))
+                    <input type="hidden" name="id" value="{{ $customer->id }}">
+                @endif
+
                 <div class="card-body">
                     <div class="form-group">
                         <label for="full_name">Nome do Cliente</label>

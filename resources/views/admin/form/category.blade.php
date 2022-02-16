@@ -10,6 +10,11 @@
 
             <form method="post" action="{{ isset($category) ? route('admin.post.category.report', ['id'=> $category->id]) : route('admin.post.category.register') }}">
                 @csrf
+
+                @if(isset($category))
+                    <input type="hidden" name="id" value="{{ $category->id }}">
+                @endif
+
                 <div class="card-body">
                     <div class="form-group">
                         <label for="title">Categoria</label>

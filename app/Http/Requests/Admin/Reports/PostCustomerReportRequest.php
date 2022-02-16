@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin\Reports;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Hash;
 
-class PostUserRegisterRequest extends FormRequest
+class PostCustomerReportRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -17,13 +16,6 @@ class PostUserRegisterRequest extends FormRequest
         return true;
     }
 
-    public function prepareForValidation()
-    {
-            $this->merge([
-                "password" => Hash::make($this->password),
-            ]);
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -32,9 +24,9 @@ class PostUserRegisterRequest extends FormRequest
     public function rules()
     {
         return [
+            'id' => 'required|exists:customers,id',
             'full_name' => 'required',
-            'username' => 'required|unique:users',
-            'password' => 'required',
+            'category_id' => 'required|exists:categories,id',
             'profile' => 'required'
         ];
     }

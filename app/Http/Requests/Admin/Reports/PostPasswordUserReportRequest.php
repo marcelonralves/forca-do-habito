@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin\Reports;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PostCustomerRegisterRequest extends FormRequest
+class PostPasswordUserReportRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -16,6 +16,13 @@ class PostCustomerRegisterRequest extends FormRequest
         return true;
     }
 
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            "id" => $this->route('id')
+        ]);
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,9 +31,8 @@ class PostCustomerRegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'full_name' => 'required',
-            'category_id' => 'required',
-            'profile' => 'required'
+            'id' => 'required|exists:users,id',
+            'password' => 'required|confirmed'
         ];
     }
 }

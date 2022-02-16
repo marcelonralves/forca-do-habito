@@ -3,112 +3,70 @@
 namespace App\Http\Controllers\Admin\Reports;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Customer;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\Admin\Reports\DeleteCategoryReportRequest;
+use App\Http\Requests\Admin\Reports\DeleteCustomerReportRequest;
+use App\Http\Requests\Admin\Reports\DeleteUserReportRequest;
+use App\Http\Requests\Admin\Reports\PostCategoryReportRequest;
+use App\Http\Requests\Admin\Reports\PostCustomerReportRequest;
+use App\Http\Requests\Admin\Reports\PostPasswordUserReportRequest;
+use App\Http\Requests\Admin\Reports\PostUserReportRequest;
+use App\Repositories\ReportRepository;
 
 class ReportController extends Controller
 {
-    public function postCategoryReport(Request $request, int $id)
+    private ReportRepository $repository;
+
+    public function __construct(ReportRepository $repository)
     {
-        $request->merge(["id" => $id]);
-        $this->validate($request, [
-            'id' => 'required|exists:categories,id',
-            'title' => 'required'
-        ]);
-
-        $category = Category::find($request->id);
-        $category->update($request->only('title'));
-
-        return redirect('/admin/relatorios/categorias')->with(["message" => "Categoria atualizada para '$request->title' com sucesso!"]);
+        $this->repository = $repository;
     }
 
-    public function postCustomerReport(Request $request, int $id)
+    public function postCategoryReport(PostCategoryReportRequest $request)
     {
-        $request->merge(["id" => $id]);
-        $this->validate($request, [
-            'id' => 'required|exists:customers,id',
-            'full_name' => 'required',
-            'category_id' => 'required|exists:categories,id',
-            'profile' => 'required'
-        ]);
+        $this->repository->updateCategory($request->validated());
 
-        $category = Customer::find($request->id);
-        $category->update($request->only('full_name', 'category_id', 'profile'));
-
-        return redirect('/admin/relatorios/clientes')->with(["message" => "Cliente '$request->full_name' atualizado(a) com sucesso!"]);
+        return redirect()->route('admin.show.category.report')->with(["message" => "Categoria atualizada para '$request->title' com sucesso!"]);
     }
 
-    public function postUserReport(Request $request, int $id)
+    public function postCustomerReport(PostCustomerReportRequest $request)
     {
-        $request->merge(["id" => $id]);
-        $this->validate($request, [
-            'id' => 'required|exists:users,id',
-            'full_name' => 'required',
-            'username' => 'required|unique:users,username'
-        ]);
+        $this->repository->updateCustomer($request->validated());
 
-        $category = User::find($request->id);
-        $category->update($request->only('full_name', 'username' , 'profile'));
-
-        return redirect('/admin/relatorios/usuarios')->with(["message" => "Usuário '$request->full_name' atualizado(a) com sucesso!"]);
+        return redirect()->route('admin.show.customer.report')->with(["message" => "Cliente '$request->full_name' atualizado(a) com sucesso!"]);
     }
 
-    public function deleteCategoryReport(Request $request, int $id)
+    public function postUserReport(PostUserReportRequest $request)
     {
-        $request->merge(["id" => $id]);
-        $this->validate($request, [
-            'id' => 'required|exists:categories,id'
-        ]);
+        $this->repository->updateUser($request->validated());
 
-        Category::destroy($id);
+        return redirect()->route('admin.show.user.report')->with(["message" => "Usuário '$request->full_name' atualizado(a) com sucesso!"]);
+    }
+
+    public function deleteCategoryReport(DeleteCategoryReportRequest $request)
+    {
+        $this->repository->deleteCategory($request->validated());
 
         return back()->with('message', 'Categoria deletada som sucesso!');
     }
 
-    public function deleteCustomerReport(Request $request, int $id)
+    public function deleteCustomerReport(DeleteCustomerReportRequest $request)
     {
-        $request->merge(["id" => $id]);
-        $this->validate($request, [
-            'id' => 'required|exists:customers,id'
-        ]);
-
-        Customer::destroy($id);
+        $this->repository->deleteCustomer($request->validated());
 
         return back()->with('message', 'Cliente deletado som sucesso!');
     }
 
-    public function deleteUserReport(Request $request, int $id)
+    public function deleteUserReport(DeleteUserReportRequest $request)
     {
-        $request->merge(["id" => $id]);
-        $this->validate($request, [
-            'id' => 'required|exists:users,id'
-        ]);
+        $this->repository->deleteUser($request->validated());
 
-        User::destroy($id);
-
-        return back()->with('message', 'Usuário(a) deletado(a) som sucesso!');
+        return back()->with('message', 'Usuário(a) deletado(a) com sucesso!');
     }
 
-    public function postUserPassReport(Request $request, int $id)
+    public function postUserPassReport(PostPasswordUserReportRequest $request)
     {
-        $request->merge(["id" => $id]);
-        $this->validate($request, [
-            'id' => 'required|exists:users,id',
-            'new_password' => 'required',
-            'repeat_new_password' => 'required'
-        ]);
+        $this->repository->updatePassword($request->validated());
 
-        if($request->input('new_password') != $request->input('repeat_new_password')){
-            return back()->withErrors('As senhas não conferem');
-        }
-
-        $user = User::find($id);
-        $user->password = Hash::make($request->input('new_password'));
-        $user->save();
-
-        return back()->with('message', 'As senhas foi atualizada com sucesso');
+        return back()->with('message', 'A senha foi atualizada com sucesso');
     }
 }
