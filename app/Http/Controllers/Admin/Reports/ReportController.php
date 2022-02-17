@@ -11,6 +11,7 @@ use App\Http\Requests\Admin\Reports\PostCustomerReportRequest;
 use App\Http\Requests\Admin\Reports\PostPasswordUserReportRequest;
 use App\Http\Requests\Admin\Reports\PostUserReportRequest;
 use App\Repositories\ReportRepository;
+use Illuminate\Http\RedirectResponse;
 
 class ReportController extends Controller
 {
@@ -21,52 +22,52 @@ class ReportController extends Controller
         $this->repository = $repository;
     }
 
-    public function postCategoryReport(PostCategoryReportRequest $request)
+    public function postCategoryReport(PostCategoryReportRequest $request): RedirectResponse
     {
         $this->repository->updateCategory($request->validated());
 
         return redirect()->route('admin.show.category.report')->with(["message" => "Categoria atualizada para '$request->title' com sucesso!"]);
     }
 
-    public function postCustomerReport(PostCustomerReportRequest $request)
+    public function postCustomerReport(PostCustomerReportRequest $request): RedirectResponse
     {
         $this->repository->updateCustomer($request->validated());
 
         return redirect()->route('admin.show.customer.report')->with(["message" => "Cliente '$request->full_name' atualizado(a) com sucesso!"]);
     }
 
-    public function postUserReport(PostUserReportRequest $request)
+    public function postUserReport(PostUserReportRequest $request): RedirectResponse
     {
         $this->repository->updateUser($request->validated());
 
         return redirect()->route('admin.show.user.report')->with(["message" => "Usuário '$request->full_name' atualizado(a) com sucesso!"]);
     }
 
-    public function deleteCategoryReport(DeleteCategoryReportRequest $request)
+    public function deleteCategoryReport(DeleteCategoryReportRequest $request): RedirectResponse
     {
         $this->repository->deleteCategory($request->validated());
 
-        return back()->with('message', 'Categoria deletada som sucesso!');
+        return redirect()->route('admin.show.category.report')->with('message', 'Categoria deletada com sucesso!');
     }
 
-    public function deleteCustomerReport(DeleteCustomerReportRequest $request)
+    public function deleteCustomerReport(DeleteCustomerReportRequest $request): RedirectResponse
     {
         $this->repository->deleteCustomer($request->validated());
 
-        return back()->with('message', 'Cliente deletado som sucesso!');
+        return redirect()->route('admin.show.customer.report')->with('message', 'Cliente deletado com sucesso!');
     }
 
-    public function deleteUserReport(DeleteUserReportRequest $request)
+    public function deleteUserReport(DeleteUserReportRequest $request): RedirectResponse
     {
         $this->repository->deleteUser($request->validated());
 
-        return back()->with('message', 'Usuário(a) deletado(a) com sucesso!');
+        return redirect()->route('admin.show.user.report')->with('message', 'Usuário(a) deletado(a) com sucesso!');
     }
 
-    public function postUserPassReport(PostPasswordUserReportRequest $request)
+    public function postUserPassReport(PostPasswordUserReportRequest $request): RedirectResponse
     {
         $this->repository->updatePassword($request->validated());
 
-        return back()->with('message', 'A senha foi atualizada com sucesso');
+        return redirect()->route('admin.show.user.report')->with('message', 'A senha foi atualizada com sucesso');
     }
 }

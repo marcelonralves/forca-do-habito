@@ -4,6 +4,7 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Relatório de Categorias</h5>
+        @if(isset($categories[0]))
 
             <!-- Default Table -->
             <table class="table">
@@ -39,4 +40,9 @@
             }
         </script>
     @endsection
+    @else
+            <br> Não há nenhuma categoria cadastrada, para cadastrar alguma <a href="{{ route('admin.form.category.register') }}">Clique aqui!</a>
+            </div>
+        </div>
+        @endif
 @endsection

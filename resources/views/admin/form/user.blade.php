@@ -18,23 +18,23 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="full_name">Nome Completo</label>
-                        <input type="text" class="form-control" id="full_name" name="full_name" value="{{ $user->full_name ?? '' }}" placeholder="ex: Marcelo do Nascimento Alves">
+                        <input type="text" class="form-control" id="full_name" name="full_name" value="{{ $user->full_name ?? '' }}" placeholder="ex: Marcelo do Nascimento Alves" required>
                     </div>
                     <div class="form-group">
                         <label for="username">Login</label>
-                        <input type="text" class="form-control" id="username" name="username" value="{{ $user->username ?? '' }}" placeholder="ex: marceloadmin">
+                        <input type="email" class="form-control" id="username" name="username" value="{{ $user->username ?? '' }}" placeholder="ex: marceloadmin" required>
                     </div>
                     @if(!isset($user))
                         <div class="form-group">
                             <label for="password">Senha</label>
-                            <input type="password" class="form-control" id="password" name="password" value="" placeholder="Senha">
+                            <input type="password" class="form-control" id="password" name="password" value="" placeholder="Senha" required>
                         </div>
                     @endif
                     <div class="form-group">
                         <label for="profile">Perfil</label>
                         <select class="form-control" name="profile" id="profile">
-                            <option value="visualizar">Visualizador</option>
-                            <option value="administrar">Administrador</option>
+                            <option value="visualizar" {{ (isset($user) && $user->profile == "visualizar") ? 'selected' : '' }}>Visualizador</option>
+                            <option value="administrar" {{ (isset($user) && $user->profile == "administrar") ? 'selected' : '' }}>Administrador</option>
                         </select>
                     </div>
                 </div>

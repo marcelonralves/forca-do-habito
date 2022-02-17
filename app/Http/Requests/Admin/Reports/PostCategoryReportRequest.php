@@ -25,7 +25,7 @@ class PostCategoryReportRequest extends FormRequest
     {
         return [
             'id' => 'required|exists:categories,id',
-            'title' => 'required|unique:categories,title'
+            'title' => 'required|unique:categories,title,'. $this->input('id')
         ];
     }
 }
