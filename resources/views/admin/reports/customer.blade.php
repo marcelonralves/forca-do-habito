@@ -19,9 +19,9 @@
                     @foreach($customers as $customer)
                         <tr>
                             <th scope="row">{{ $customer->id }}</th>
-                            <td>{{ $customer->full_name }}</td>
+                            <td>{{ ucfirst($customer->full_name) }}</td>
                             <td><span style="background-color: {{ $customer->category->color }}; color: white" class="badge">{{ $customer->category->title }}</span></td>
-                            <td>{{ $customer->profile }}</td>
+                            <td>{{ ucfirst($customer->profile) }}</td>
                             <td><a href="{{ url("/admin/relatorios/clientes/{$customer->id}/edit") }}" class="btn btn-warning">Editar</a>
                                 <a href="{{ url("/admin/relatorios/clientes/{$customer->id}/del") }}" onClick="return confirm('Você tem certeza que quer deletar esse cliente? Não há como reverter')" class="btn btn-danger">Deletar</a>
                             </td>

@@ -13,19 +13,8 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        Category::create([
-            'title' => 'Grátis',
-            'color' => 'red'
-        ]);
-
-        Category::create([
-            'title' => 'Normal',
-            'color' => 'blue'
-        ]);
-
-        Category::create([
-            'title' => 'Prêmio',
-            'color' => 'grey'
-        ]);
+        Category::create(['title' => 'Grátis']);
+        Category::create(['title' => 'Normal']);
+        Category::create(['title' => 'Prêmio']);
     }
 }

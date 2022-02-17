@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Customer;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class AdminRepository
 {
@@ -37,8 +38,13 @@ class AdminRepository
     public function countTables(): array
     {
         $this->countArray['customers'] = Customer::all()->count();
+        $this->countArray['customers_word'] = Str::plural('Cliente', $this->countArray['customers']);
+
         $this->countArray['users'] = User::all()->count();
+        $this->countArray['users_word'] = Str::plural('Usuário', $this->countArray['users']);
+
         $this->countArray['categories'] = Category::all()->count();
+        $this->countArray['categories_word'] = Str::plural('Categoria', $this->countArray['categories']);
 
         return $this->countArray;
     }
@@ -52,4 +58,5 @@ class AdminRepository
 
         return $this->customersRegister;
     }
+
 }

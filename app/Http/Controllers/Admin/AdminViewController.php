@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Repositories\AdminRepository;
 use Illuminate\View\View;
 
@@ -13,6 +12,7 @@ class AdminViewController extends Controller
 
     public function __construct(AdminRepository $repository)
     {
+
         $this->repository = $repository;
     }
 

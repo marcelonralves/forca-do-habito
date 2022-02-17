@@ -16,9 +16,6 @@
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
 
         <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-            </li>
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="{{ route('admin.dashboard') }}" class="nav-link">Dashboard</a>
             </li>
@@ -67,7 +64,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Dashboard v3</h1>
+                        <h1 class="m-0">{{ env('APP_NAME') }} - Administração</h1>
                     </div>
                 </div>
             </div>
@@ -91,18 +88,8 @@
                     @endif
                 @yield('content')
             </div>
-
         </div>
-
     </div>
-
-    <footer class="main-footer">
-        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-        All rights reserved.
-        <div class="float-right d-none d-sm-inline-block">
-            <b>Version</b> 3.2.0
-        </div>
-    </footer>
 </div>
 
 <script src="{{ asset('js/jquery.js') }}"></script>

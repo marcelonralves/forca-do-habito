@@ -19,9 +19,9 @@
                 @foreach($users as $user)
                     <tr>
                         <th scope="row">{{ $user->id }}</th>
-                        <td>{{ $user->full_name }}</td>
+                        <td>{{ ucfirst($user->full_name) }}</td>
                         <td>{{ $user->username }}</td>
-                        <td>{{ $user->profile }}</td>
+                        <td>{{ ucfirst($user->profile) }}</td>
                         <td><a href="{{ url("/admin/relatorios/usuarios/{$user->id}/edit") }}" class="btn btn-warning">Editar</a>
                             <a href="{{ url("/admin/relatorios/usuarios/{$user->id}/del") }}" onClick="return confirm('Você tem certeza que quer deletar esse cliente? Não há como reverter')" class="btn btn-danger">Deletar</a>
                         </td>

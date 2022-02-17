@@ -5,7 +5,7 @@
             <div class="small-box bg-info">
                 <div class="inner">
                     <h3>{{ $countCards['customers'] }}</h3>
-                    <p>Clientes</p>
+                    <p>{{ $countCards['customers_word'] }}</p>
                 </div>
                 <div class="icon">
                     <i class="fas fas fa-user-plus"></i>
@@ -17,7 +17,7 @@
             <div class="small-box bg-success">
                 <div class="inner">
                     <h3>{{ $countCards['users'] }}</h3>
-                    <p>Usuários</p>
+                    <p>{{ $countCards['users_word'] }}</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
@@ -29,7 +29,7 @@
             <div class="small-box bg-warning">
                 <div class="inner">
                     <h3>{{ $countCards['categories'] }}</h3>
-                    <p>Categorias</p>
+                    <p>{{ $countCards['categories_word'] }}</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-user-plus"></i>
@@ -83,7 +83,7 @@
 
             <div class="card card-danger">
                 <div class="card-header">
-                    <h3 class="card-title">Clientes Registrados</h3>
+                    <h3 class="card-title">Clientes com base na categoria</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>

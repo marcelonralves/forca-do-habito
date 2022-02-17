@@ -37,9 +37,13 @@
 <body class="text-center">
 
 <main class="form-signin">
-    @if (session('message'))
+    @if ($errors->any())
         <div class="alert alert-danger">
-            {{ session('message') }}
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         </div>
     @endif
     <form method="post" action="{{ route('admin.post.login') }}">

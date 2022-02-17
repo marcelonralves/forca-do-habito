@@ -22,7 +22,7 @@
                     </div>
                     <div class="form-group">
                         <label for="username">Login</label>
-                        <input type="email" class="form-control" id="username" name="username" value="{{ $user->username ?? '' }}" placeholder="ex: marceloadmin" required>
+                        <input type="email" class="form-control" id="username" name="username" value="{{ $user->username ?? '' }}" placeholder="ex: marcelo@hotmail.com" required>
                     </div>
                     @if(!isset($user))
                         <div class="form-group">
@@ -33,8 +33,8 @@
                     <div class="form-group">
                         <label for="profile">Perfil</label>
                         <select class="form-control" name="profile" id="profile">
-                            <option value="visualizar" {{ (isset($user) && $user->profile == "visualizar") ? 'selected' : '' }}>Visualizador</option>
-                            <option value="administrar" {{ (isset($user) && $user->profile == "administrar") ? 'selected' : '' }}>Administrador</option>
+                            <option value="visualizador" {{ (isset($user) && $user->profile == "visualizador") ? 'selected' : '' }}>Visualizador</option>
+                            <option value="administrador" {{ (isset($user) && $user->profile == "administrador") ? 'selected' : '' }}>Administrador</option>
                         </select>
                     </div>
                 </div>
