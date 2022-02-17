@@ -26,42 +26,42 @@ class ReportController extends Controller
     {
         $this->repository->updateCategory($request->validated());
 
-        return redirect()->route('admin.show.category.report')->with(["message" => "Categoria atualizada para '$request->title' com sucesso!"]);
+        return redirect()->route('admin.show.category.report')->with("message", "Categoria atualizada para '$request->title' com sucesso!");
     }
 
     public function postCustomerReport(PostCustomerReportRequest $request): RedirectResponse
     {
         $this->repository->updateCustomer($request->validated());
 
-        return redirect()->route('admin.show.customer.report')->with(["message" => "Cliente '$request->full_name' atualizado(a) com sucesso!"]);
+        return redirect()->route('admin.show.customer.report')->with("message",  "Cliente '$request->full_name' atualizado(a) com sucesso!");
     }
 
     public function postUserReport(PostUserReportRequest $request): RedirectResponse
     {
         $this->repository->updateUser($request->validated());
 
-        return redirect()->route('admin.show.user.report')->with(["message" => "Usuário '$request->full_name' atualizado(a) com sucesso!"]);
+        return redirect()->route('admin.show.user.report')->with("message", "Usuário '$request->full_name' atualizado(a) com sucesso!");
     }
 
     public function deleteCategoryReport(DeleteCategoryReportRequest $request): RedirectResponse
     {
         $this->repository->deleteCategory($request->validated());
 
-        return redirect()->route('admin.show.category.report')->with('message', 'Categoria deletada com sucesso!');
+        return redirect()->route('admin.show.category.report')->with("message", "Categoria deletada com sucesso!");
     }
 
     public function deleteCustomerReport(DeleteCustomerReportRequest $request): RedirectResponse
     {
         $this->repository->deleteCustomer($request->validated());
 
-        return redirect()->route('admin.show.customer.report')->with('message', 'Cliente deletado com sucesso!');
+        return redirect()->route('admin.show.customer.report')->with("message", "Cliente '$request->full_name' deletado com sucesso!");
     }
 
     public function deleteUserReport(DeleteUserReportRequest $request): RedirectResponse
     {
         $this->repository->deleteUser($request->validated());
 
-        return redirect()->route('admin.show.user.report')->with('message', 'Usuário(a) deletado(a) com sucesso!');
+        return redirect()->route('admin.show.user.report')->with("message", "Usuário(a) '$request->full_name' deletado(a) com sucesso!");
     }
 
     public function postUserPassReport(PostPasswordUserReportRequest $request): RedirectResponse

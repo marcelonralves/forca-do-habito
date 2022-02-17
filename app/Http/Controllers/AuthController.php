@@ -14,7 +14,7 @@ class AuthController extends Controller
         $user = User::where('username', $request->input('username'))->first();
 
         if(!Hash::check($request->input('password'), $user->password)) {
-            return back()->with('errors', 'Desculpe, mas os dados não conferem. Tente novamente');
+            return back()->withErrors(["errors" => "Desculpe, mas os dados não conferem. Tente novamente"]);
         }
 
         Auth::attempt($request->validated());

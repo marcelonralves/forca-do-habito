@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\AdminRepository;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
 class AdminViewController extends Controller
@@ -12,7 +15,6 @@ class AdminViewController extends Controller
 
     public function __construct(AdminRepository $repository)
     {
-
         $this->repository = $repository;
     }
 
@@ -25,8 +27,12 @@ class AdminViewController extends Controller
         return view('admin.dashboard', compact('countCards', 'pizzaCustomer', 'countRegs'));
     }
 
-    public function login(): View
+    public function login(): View|RedirectResponse
     {
+        if(Auth::check()) {
+            return redirect()->route("admin.dashboard");
+        }
+
         return view('admin.login');
     }
 }
