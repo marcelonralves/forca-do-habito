@@ -20,8 +20,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('admin/login', [AdminViewController::class, 'login'])->name('login');
-Route::post('admin/login', [AuthController::class, 'postLogin'])->name('admin.post.login');
+Route::get('/', [AdminViewController::class, 'login'])->name('login');
+Route::post('/', [AuthController::class, 'postLogin'])->name('admin.post.login');
 
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/', [AdminViewController::class, 'dashboard'])->name('admin.dashboard');
