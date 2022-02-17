@@ -9,6 +9,7 @@ Para que o projeto funcione na sua máquina é necessário ter:
 - Composer
 - Git
 - PHP 8.0^
+- MySQL
 ## Como instalar?
 
 Basta seguir o passo-a-passo abaixo para realizar a instalação
