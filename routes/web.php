@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\Registers\RegisterViewController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\Reports\ReportController;
 use App\Http\Controllers\Admin\Reports\ReportViewController;
+use App\Http\Middleware\CheckReport;
 use Illuminate\Support\Facades\Route;
 
 
@@ -48,28 +49,31 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     /*
      * REPORTS ROUTES - VIEWS
      */
-    Route::controller(ReportViewController::class)->group(function () {
-        Route::get('relatorios/clientes/{id}/edit', 'editCustomerReport');
-        Route::get('relatorios/usuarios/{id}/edit', 'editUserReport');
-        Route::get('relatorios/categorias/{id}/edit', 'editCategoryReport');
-        Route::get('relatorios/clientes', 'showCustomerReport')->name('admin.show.customer.report');
-        Route::get('relatorios/usuarios', 'showUserReport')->name('admin.show.user.report');
-        Route::get('relatorios/categorias', 'showCategoryReport')->name('admin.show.category.report');
-    });
+    Route::middleware('checkStatus')->group(function () {
 
-    /*
-    * REPORTS ROUTES - POSTS
-    */
-    Route::controller(ReportController::class)->group(function () {
-        //ACTION - EDIT
-        Route::post('relatorios/clientes/{id}/edit', 'postCustomerReport')->name('admin.post.customer.report');
-        Route::post('relatorios/usuarios/{id}/edit', 'postUserReport')->name('admin.post.user.report');
-        Route::post('relatorios/categorias/{id}/edit', 'postCategoryReport')->name('admin.post.category.report');
-        Route::post('relatorios/usuarios/{id}/pass', 'postUserPassReport')->name('admin.post.password');
+        Route::controller(ReportViewController::class)->group(function () {
+            Route::get('relatorios/clientes/{id}/edit', 'editCustomerReport');
+            Route::get('relatorios/usuarios/{id}/edit', 'editUserReport');
+            Route::get('relatorios/categorias/{id}/edit', 'editCategoryReport');
+            Route::get('relatorios/clientes', 'showCustomerReport')->name('admin.show.customer.report');
+            Route::get('relatorios/usuarios', 'showUserReport')->name('admin.show.user.report');
+            Route::get('relatorios/categorias', 'showCategoryReport')->name('admin.show.category.report');
+        });
 
-        //ACTION - DELETE
-        Route::get('relatorios/clientes/{id}/del', 'deleteCustomerReport');
-        Route::get('relatorios/usuarios/{id}/del', 'deleteUserReport');
-        Route::get('relatorios/categorias/{id}/del', 'deleteCategoryReport');
-    });
+        /*
+        * REPORTS ROUTES - POSTS
+        */
+        Route::controller(ReportController::class)->group(function () {
+            //ACTION - EDIT
+            Route::post('relatorios/clientes/{id}/edit', 'postCustomerReport')->name('admin.post.customer.report');
+            Route::post('relatorios/usuarios/{id}/edit', 'postUserReport')->name('admin.post.user.report');
+            Route::post('relatorios/categorias/{id}/edit', 'postCategoryReport')->name('admin.post.category.report');
+            Route::post('relatorios/usuarios/{id}/pass', 'postUserPassReport')->name('admin.post.password');
+
+            //ACTION - DELETE
+            Route::get('relatorios/clientes/{id}/del', 'deleteCustomerReport');
+            Route::get('relatorios/usuarios/{id}/del', 'deleteUserReport');
+            Route::get('relatorios/categorias/{id}/del', 'deleteCategoryReport');
+        });
+        });
 });

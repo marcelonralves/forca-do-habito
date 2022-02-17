@@ -21,28 +21,15 @@
                         <th scope="row">{{ $category->id }}</th>
                         <td>{{ $category->title }}</td>
                         <td><a href="{{ url("/admin/relatorios/categorias/{$category->id}/edit") }}" class="btn btn-warning">Editar</a>
-                            <button onclick="confirmDelete()" class="btn btn-danger">Deletar</button>
+                            <a href="{{ url("/admin/relatorios/categorias/{$category->id}/del") }}" onClick="return confirm('Você tem certeza que quer deletar essa categoria? Não há como reverter e também irá DELETAR os usuários que estão nessa categoria!')" class="btn btn-danger">Deletar</a>
                         </td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
-            <!-- End Default Table Example -->
+            @else
+                <br> Não há nenhuma categoria cadastrada, para cadastrar alguma <a href="{{ route('admin.form.category.register') }}">Clique aqui!</a>
+            @endif
         </div>
     </div>
-    @section('script')
-        <script>
-            function confirmDelete() {
-                let confirma = confirm("Você tem certeza que quer deletar esse registro? Ação não reversível");
-                if (confirma) {
-                    window.location.href = "{{ url("/admin/relatorios/categorias/{$category->id}/del") }}";
-                }
-            }
-        </script>
-    @endsection
-    @else
-            <br> Não há nenhuma categoria cadastrada, para cadastrar alguma <a href="{{ route('admin.form.category.register') }}">Clique aqui!</a>
-            </div>
-        </div>
-        @endif
 @endsection

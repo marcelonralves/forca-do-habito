@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin\Reports;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class DeleteUserReportRequest extends FormRequest
 {
@@ -13,6 +14,10 @@ class DeleteUserReportRequest extends FormRequest
      */
     public function authorize()
     {
+        if($this->input('id') == Auth::user()->id) {
+            return false;
+        }
+
         return true;
     }
 
@@ -21,6 +26,7 @@ class DeleteUserReportRequest extends FormRequest
         $this->merge([
             "id" => $this->route('id')
         ]);
+
     }
 
     /**

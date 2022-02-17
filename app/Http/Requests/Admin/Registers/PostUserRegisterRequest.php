@@ -33,7 +33,7 @@ class PostUserRegisterRequest extends FormRequest
     {
         return [
             'full_name' => 'required',
-            'username' => 'required|unique:users',
+            'username' => 'required|unique:users|email',
             'password' => 'required',
             'profile' => 'required'
         ];

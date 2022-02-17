@@ -47,7 +47,7 @@
         <h1 class="h3 mb-3 fw-normal">Administração</h1>
 
         <div class="form-floating">
-            <input type="text" class="form-control" id="username"  name="username">
+            <input type="email" class="form-control" id="username"  name="username">
             <label for="username">Usuário</label>
         </div>
         <div class="form-floating">

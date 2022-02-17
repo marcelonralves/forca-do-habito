@@ -23,30 +23,17 @@
                             <td><span style="background-color: {{ $customer->category->color }}; color: white" class="badge">{{ $customer->category->title }}</span></td>
                             <td>{{ $customer->profile }}</td>
                             <td><a href="{{ url("/admin/relatorios/clientes/{$customer->id}/edit") }}" class="btn btn-warning">Editar</a>
-                                <button onclick="confirmDelete()" class="btn btn-danger">Deletar</button>
+                                <a href="{{ url("/admin/relatorios/clientes/{$customer->id}/del") }}" onClick="return confirm('Você tem certeza que quer deletar esse cliente? Não há como reverter')" class="btn btn-danger">Deletar</a>
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
-                <!-- End Default Table Example -->
+            @else
+                <br> Não há nenhum cliente cadastrado, para cadastrar alguém <a href="{{ route('admin.form.customer.register') }}">Clique aqui!</a>
+            @endif
         </div>
     </div>
-            @section('script')
-                <script>
-                    function confirmDelete() {
-                        let confirma = confirm("Você tem certeza que quer deletar esse registro? Ação não reversível");
-                        if (confirma) {
-                            window.location.href = "{{ url("/admin/relatorios/clientes/$customer->id/del") }}";
-                        }
-                    }
-                </script>
 
-            @endsection
-        @else
-            <br> Não há nenhum cliente cadastrado, para cadastrar alguém <a href="{{ route('admin.form.customer.register') }}">Clique aqui!</a>
-        @endif
-        </div>
-            </div>
 @endsection
 
