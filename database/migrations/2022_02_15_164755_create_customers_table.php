@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->string("full_name");
-            $table->foreignId("category_id");
+            $table->foreignId("category_id")->constrained("categories")->onUpdate("cascade")->onDelete("cascade");
             $table->string("profile");
             $table->timestamps();
+
         });
     }
 

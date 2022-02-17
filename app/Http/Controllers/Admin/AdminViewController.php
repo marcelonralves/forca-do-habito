@@ -4,10 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Models\Customer;
-use App\Models\User;
 use App\Repositories\AdminRepository;
-use Carbon\Carbon;
 use Illuminate\View\View;
 
 class AdminViewController extends Controller

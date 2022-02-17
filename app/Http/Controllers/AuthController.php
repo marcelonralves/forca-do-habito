@@ -24,7 +24,7 @@ class AuthController extends Controller
 
         Auth::attempt($credentials);
 
-        return redirect()->intended('/admin');
+        return redirect()->route('admin.dashboard')->with('message', 'Bem vindo(a)!');
     }
 
     public function logout()

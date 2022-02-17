@@ -21,10 +21,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('admin/login', [AdminViewController::class, 'login'])->name('login');
-Route::post('admin/login', [AuthController::class, 'postLogin'])->name('postLogin');
+Route::post('admin/login', [AuthController::class, 'postLogin'])->name('admin.post.login');
 
 Route::prefix('admin')->middleware('auth')->group(function () {
-    Route::get('/', [AdminViewController::class, 'dashboard']);
+    Route::get('/', [AdminViewController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/sair', [AuthController::class, 'logout'])->name('admin.logout');
 
     /*
